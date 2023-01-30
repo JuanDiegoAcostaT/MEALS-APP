@@ -47,9 +47,9 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"MEALS", initProps);
 
   if (@available(iOS 13.0, *)) {
-    rootView.backgroundColor = [UIColor systemBackgroundColor];
+    rootView.backgroundColor = [[UIColor alloc] initWithRed:0.14f green:0.09f blue:0.06f alpha: 1.00f];
   } else {
-    rootView.backgroundColor = [UIColor whiteColor];
+   rootView.backgroundColor = [[UIColor alloc] initWithRed:0.14f green:0.09f blue:0.06f alpha: 1.00f];
   }
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
