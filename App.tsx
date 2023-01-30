@@ -8,8 +8,9 @@
  * @format
  */
 
-import React, {type PropsWithChildren} from 'react';
+import React from 'react';
 import {
+  StatusBar,
   StyleSheet
 } from 'react-native';
 
@@ -19,7 +20,13 @@ import CategoriesScreen from './screens/CategoriesScreen';
 const App = () => {
 
   return (
-   <CategoriesScreen />
+    <>
+      <StatusBar
+        backgroundColor="blue"
+        barStyle="light-content"
+      />
+      <CategoriesScreen />
+    </>
   );
 };
 
