@@ -8,7 +8,8 @@ import {
 
 type ICategoryGridTile = {
     title: string,
-    color: string
+    color: string,
+    id : string
 }
 
 function CategoryGridTile(

@@ -9,6 +9,7 @@ function renderCategoryItem({ item }:
     return <CategoryGridTile
         color={item.color}
         title={item.title}
+        id={item.id}
     />
 }
 
