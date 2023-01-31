@@ -1,6 +1,6 @@
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { StyleSheet, Text, View } from "react-native"
-import { IMealsOverview } from "../App";
+import { IMealsOverview } from "../types/route";
 
 
 function MealsOverviewScreen() {
