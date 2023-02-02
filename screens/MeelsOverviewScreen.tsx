@@ -15,8 +15,13 @@ function MealsOverviewScreen() {
         return meal.categoryIds.includes(params.categoryId)
     })
 
-    const renderMealItem = ({item} : {item : Meal}): ReactElement => {
-        return <MealItem title={item.title}  />
+    const renderMealItem = ({ item }: { item: Meal }): ReactElement => {
+        return <MealItem
+            affordability={item.affordability}
+            complexity={item.complexity}
+            duration={item.duration}
+            image={item.imageUrl}
+            title={item.title} />
     }
 
 

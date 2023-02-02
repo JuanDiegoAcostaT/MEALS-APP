@@ -1,9 +1,22 @@
 import { ReactElement } from "react"
 import { Text, View } from "react-native"
 
-function MealItem({title} : {title : string}): ReactElement {
-    return <View>
-        <Text>{title}</Text>
+
+type IMealItem = {
+    title: string,
+    image: string,
+    duration: string,
+    affordability: string,
+    complexity: string
+}
+
+function MealItem(
+    { title,
+        image,
+        duration,
+        affordability,
+        complexity }:
+        IMealItem): ReactElement {
     </View>
 }
 
