@@ -41,13 +41,13 @@ const styles = StyleSheet.create({
 
     mealCard: {
         borderRadius: 8,
-        backgroundColor: '#ccc',
+        backgroundColor: '#fff',
         padding : 16,
-        margin : 16,
+        margin : 8,
         shadowColor: 'black',
         shadowOpacity: 0.25,
         shadowOffset: { width: 2, height: 0  },
-        shadowRadius: 8,
+        shadowRadius: 2,
         elevation: 4,
     },
     mealTitle : {
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     },
     mealDetails : {
         borderRadius: 8,
-        backgroundColor: '#fff',
+        backgroundColor: '#ccc',
         padding : 16,
         marginTop : 12
     }
