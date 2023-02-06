@@ -1,15 +1,35 @@
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { ReactElement } from "react"
-import { Image, StyleSheet, Text, View } from "react-native"
+import { Image, Pressable, StyleSheet, Text, View } from "react-native"
+import Meal from "../models/meal";
+import { RootStackParamList } from "../types/route";
 
 
 type IMealItem = {
     mealItem : Meal
 }
 
+type IMealItemNavProp =
+    StackNavigationProp<RootStackParamList, 'MealsDetails'>;
+
 function MealItem(
     { mealItem }:
         IMealItem): ReactElement {
+
+    const navigation = useNavigation<IMealItemNavProp>();
+
+
+        const handleMealDetails = () : void => {
+            const newLocal = 'MealsDetails';
+            navigation.navigate(newLocal, {mealItem})
+        }
+
+
     return <View style={styles.mealCard} >
+        <Pressable 
+        onPress={handleMealDetails}
+        >
         <Text style={styles.mealTitle} >{mealItem.title}</Text>
         <Image
             style={styles.mealImage}
@@ -19,6 +39,7 @@ function MealItem(
             <Text>Affordability : {mealItem.affordability}</Text>
             <Text>Complexity : {mealItem.complexity}</Text>
         </View>
+        </Pressable>
     </View>
 }
 

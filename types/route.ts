@@ -1,19 +1,33 @@
 import { StackNavigationProp } from "@react-navigation/stack";
+import Meal from "../models/meal";
 
 
 // MealsOverview
-export type IMealsOverviewProps = {
-    categoryId: string
-  }
-  
-  export type IMealsOverview = {
-    MealsOverview: undefined;
-    Details: IMealsOverviewProps
-  };
-  
-  
-  export type RootStackParamList = {
-    MealsCategories: undefined;
-    MealsOverview: IMealsOverviewProps;
-  };
+type IMealsOverviewProps = {
+  categoryId: string
+}
+
+export type IMealsOverview = {
+  MealsOverview: undefined;
+  Details: IMealsOverviewProps
+};
+
+//MealsDetails
+
+type IMealsDetailsProps = {
+  mealItem: Meal
+}
+
+export type IMealsDetails = {
+  MealsDetails: undefined;
+  Details: IMealsDetailsProps
+};
+
+
+
+export type RootStackParamList = {
+  MealsCategories: undefined;
+  MealsOverview: IMealsOverviewProps;
+  MealsDetails: IMealsDetailsProps;
+};
 
