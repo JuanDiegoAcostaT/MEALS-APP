@@ -22,6 +22,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import { RootStackParamList } from './types/route';
 import { ICategory } from './models/category';
 import { CATEGORIES } from './data/dummy-data';
+import MealsDetails from './screens/MealsDetails';
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
@@ -46,7 +47,7 @@ const App = () => {
             name='MealsCategories'
             component={CategoriesScreen} />
           <Stack.Screen
-            options={({ route, navigation }) => {
+            options={({ route }) => {
               const categoryName: string = CATEGORIES.filter((cateogry: ICategory) => {
                 return cateogry.id == route.params.categoryId
               })[0].title
@@ -56,6 +57,9 @@ const App = () => {
             }}
             name='MealsOverview'
             component={MealsOverviewScreen} />
+          <Stack.Screen
+            name="MealsDetails"
+            component={MealsDetails} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
