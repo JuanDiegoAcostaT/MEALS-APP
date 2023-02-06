@@ -40,7 +40,7 @@ const App = () => {
             title: 'Meal Categories',
             headerStyle: { backgroundColor: '#000' },
             headerTintColor: '#fff',
-            contentStyle: { backgroundColor: '#ccc' },
+            contentStyle: { backgroundColor: '#FAA71A' },
           }}
           initialRouteName="MealsCategories">
           <Stack.Screen
@@ -53,7 +53,7 @@ const App = () => {
               })[0].title
               return {
                 title: categoryName
-            }
+              }
             }}
             name='MealsOverview'
             component={MealsOverviewScreen} />
