@@ -3,29 +3,21 @@ import { Image, StyleSheet, Text, View } from "react-native"
 
 
 type IMealItem = {
-    title: string,
-    image: string,
-    duration: string,
-    affordability: string,
-    complexity: string
+    mealItem : Meal
 }
 
 function MealItem(
-    { title,
-        image,
-        duration,
-        affordability,
-        complexity }:
+    { mealItem }:
         IMealItem): ReactElement {
     return <View style={styles.mealCard} >
-        <Text style={styles.mealTitle} >{title}</Text>
+        <Text style={styles.mealTitle} >{mealItem.title}</Text>
         <Image
             style={styles.mealImage}
-            source={{ uri: image }} />
+            source={{ uri: mealItem.imageUrl }} />
         <View style={styles.mealDetails} >
-            <Text>Duration : {duration}</Text>
-            <Text>Affordability : {affordability}</Text>
-            <Text>Complexity : {complexity}</Text>
+            <Text>Duration : {mealItem.duration}</Text>
+            <Text>Affordability : {mealItem.affordability}</Text>
+            <Text>Complexity : {mealItem.complexity}</Text>
         </View>
     </View>
 }

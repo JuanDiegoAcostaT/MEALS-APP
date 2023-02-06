@@ -17,11 +17,7 @@ function MealsOverviewScreen() {
 
     const renderMealItem = ({ item }: { item: Meal }): ReactElement => {
         return <MealItem
-            affordability={item.affordability}
-            complexity={item.complexity}
-            duration={item.duration}
-            image={item.imageUrl}
-            title={item.title} />
+                mealItem={item} />
     }
 
 
