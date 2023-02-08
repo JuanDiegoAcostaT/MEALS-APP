@@ -22,7 +22,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import { RootStackParamList } from './types/route';
 import { ICategory } from './models/category';
 import { CATEGORIES } from './data/dummy-data';
-import MealsDetails from './screens/MealsDetails';
+import DrawerNavigator from './components/DrawerNavigator';
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
@@ -42,10 +42,11 @@ const App = () => {
             headerTintColor: '#fff',
             contentStyle: { backgroundColor: '#FAA71A' },
           }}
-          initialRouteName="MealsCategories">
+          initialRouteName="DrawerNavigator">
           <Stack.Screen
-            name='MealsCategories'
-            component={CategoriesScreen} />
+            options={{ headerShown: false }}
+            name='DrawerNavigator'
+            component={DrawerNavigator} />
           <Stack.Screen
             options={({ route }) => {
               const categoryName: string = CATEGORIES.filter((cateogry: ICategory) => {

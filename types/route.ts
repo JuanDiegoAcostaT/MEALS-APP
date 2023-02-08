@@ -26,7 +26,7 @@ export type IMealsDetails = {
 
 
 export type RootStackParamList = {
-  MealsCategories: undefined;
+  DrawerNavigator: undefined;
   MealsOverview: IMealsOverviewProps;
   MealsDetails: IMealsDetailsProps;
 };
