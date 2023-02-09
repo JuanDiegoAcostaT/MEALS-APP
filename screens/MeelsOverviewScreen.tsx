@@ -1,5 +1,5 @@
 import { RouteProp, useRoute } from "@react-navigation/native";
-import React, { ReactComponentElement, ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native"
 import MealItem from "../components/MealItem";
 import { MEALS } from "../data/dummy-data";
@@ -17,9 +17,8 @@ function MealsOverviewScreen() {
 
     const renderMealItem = ({ item }: { item: Meal }): ReactElement => {
         return <MealItem
-                mealItem={item} />
+            mealItem={item} />
     }
-
 
     return <View style={styles.container} >
         <FlatList
@@ -29,7 +28,6 @@ function MealsOverviewScreen() {
         />
     </View>
 }
-
 
 const styles = StyleSheet.create({
     container: {

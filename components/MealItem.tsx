@@ -19,12 +19,10 @@ function MealItem(
 
     const navigation = useNavigation<IMealItemNavProp>();
 
-
         const handleMealDetails = () : void => {
             const newLocal = 'MealsDetails';
             navigation.navigate(newLocal, {mealItem})
         }
-
 
     return <View style={styles.mealCard} >
         <Pressable 

@@ -7,7 +7,6 @@
  *
  * @format
  */
-
 import React from 'react';
 import {
   StatusBar,
@@ -18,7 +17,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import MealsOverviewScreen from './screens/MeelsOverviewScreen';
-import CategoriesScreen from './screens/CategoriesScreen';
 import { RootStackParamList } from './types/route';
 import { ICategory } from './models/category';
 import { CATEGORIES } from './data/dummy-data';
@@ -51,7 +49,8 @@ const App = () => {
             component={DrawerNavigator} />
           <Stack.Screen
             options={({ route }) => {
-              const categoryName: string = CATEGORIES.filter((cateogry: ICategory) => {
+              const categoryName: string = 
+              CATEGORIES.filter((cateogry: ICategory) => {
                 return cateogry.id == route.params.categoryId
               })[0].title
               return {
@@ -68,7 +67,5 @@ const App = () => {
     </>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default App;
