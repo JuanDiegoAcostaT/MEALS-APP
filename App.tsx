@@ -22,6 +22,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import { RootStackParamList } from './types/route';
 import { ICategory } from './models/category';
 import { CATEGORIES } from './data/dummy-data';
+import MealsDetailsScreen from './screens/MealsDetailsScreen';
 import { colors } from './styles/main';
 import DrawerNavigator from './components/DrawerNavigator';
 
@@ -61,7 +62,7 @@ const App = () => {
             component={MealsOverviewScreen} />
           <Stack.Screen
             name="MealsDetails"
-            component={MealsDetails} />
+            component={MealsDetailsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
