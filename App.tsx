@@ -22,6 +22,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import { RootStackParamList } from './types/route';
 import { ICategory } from './models/category';
 import { CATEGORIES } from './data/dummy-data';
+import { colors } from './styles/main';
 import DrawerNavigator from './components/DrawerNavigator';
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
@@ -38,9 +39,9 @@ const App = () => {
         <Stack.Navigator
           screenOptions={{
             title: 'Meal Categories',
-            headerStyle: { backgroundColor: '#000' },
-            headerTintColor: '#fff',
-            contentStyle: { backgroundColor: '#FAA71A' },
+            headerStyle: { backgroundColor: colors.dark},
+            headerTintColor: colors.white,
+            contentStyle: { backgroundColor: colors.primary },
           }}
           initialRouteName="DrawerNavigator">
           <Stack.Screen
