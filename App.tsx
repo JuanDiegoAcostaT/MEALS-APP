@@ -23,6 +23,7 @@ import { CATEGORIES } from './data/dummy-data';
 import MealsDetailsScreen from './screens/MealsDetailsScreen';
 import { colors } from './styles/main';
 import DrawerNavigator from './components/DrawerNavigator';
+import FavoritesContextProvider from './store/context/favoritesContext';
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
@@ -34,6 +35,7 @@ const App = () => {
         backgroundColor="blue"
         barStyle="light-content"
       />
+      <FavoritesContextProvider>
       <NavigationContainer >
         <Stack.Navigator
           screenOptions={{
@@ -64,6 +66,7 @@ const App = () => {
             component={MealsDetailsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
+      </FavoritesContextProvider>
     </>
   );
 };
