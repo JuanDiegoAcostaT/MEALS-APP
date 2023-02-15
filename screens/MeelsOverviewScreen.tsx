@@ -1,13 +1,12 @@
 import { RouteProp, useRoute } from "@react-navigation/native";
 import React, { ReactElement } from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native"
-import MealItem from "../components/MealItem";
+import MealsList from "../components/MealsList";
 import { MEALS } from "../data/dummy-data";
 import Meal from "../models/meal";
 import { IMealsOverview } from "../types/route";
 
 
-function MealsOverviewScreen() {
+function MealsOverviewScreen(): ReactElement {
     const { params } = useRoute<RouteProp<
         IMealsOverview, "Details">>();
 
@@ -15,25 +14,8 @@ function MealsOverviewScreen() {
         return meal.categoryIds.includes(params.categoryId)
     })
 
-    const renderMealItem = ({ item }: { item: Meal }): ReactElement => {
-        return <MealItem
-            mealItem={item} />
-    }
-
-    return <View style={styles.container} >
-        <FlatList
-            data={meals}
-            keyExtractor={(item: Meal) => item.id}
-            renderItem={renderMealItem}
-        />
-    </View>
+    return <MealsList meals={meals} />
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 16
-    }
-})
 
 export default MealsOverviewScreen
