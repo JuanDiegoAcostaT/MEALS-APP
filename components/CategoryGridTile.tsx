@@ -8,11 +8,16 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from "../types/route";
+import { useDispatch, useSelector } from "react-redux";
+import { addFav, removeFav, selectFavorites } from "../store/redux/slices/favoritesSlice";
+import React, { useMemo } from "react";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { colors } from "../styles/main";
 
 type ICategoryGridTile = {
     title: string,
     color: string,
-    id : string
+    id: string
 }
 
 type ICategoryGridTileNavProps =
@@ -22,15 +27,37 @@ function CategoryGridTile(
     { title, color, id }
         : ICategoryGridTile) {
 
+    const dispatch = useDispatch();
+
     const navigation = useNavigation<ICategoryGridTileNavProps>();
+    const ids = useSelector(selectFavorites)
+
 
     const handlerNavigate = (): void => {
         const newLocal = 'MealsOverview';
-        navigation.navigate(newLocal, {categoryId : id })
+        navigation.navigate(newLocal, { categoryId: id })
+    }
+
+    const isFav = useMemo(() => {
+        return ids.includes(id)
+    }, [id, ids])
+
+    const handlerAddToFavs = (): void => {
+        if (isFav) {
+            dispatch(removeFav(id))
+        } else {
+            dispatch(addFav(id))
+        }
     }
 
 
     return <View style={styles.gridItem} >
+        <View style={styles.favIcon}>
+            <Icon
+                onPress={handlerAddToFavs}
+                name={isFav ? 'star' : "star-o"}
+                size={20} color={color} />
+        </View>
         <Pressable
             onPress={handlerNavigate}
             android_ripple={{ color: '#ccc' }}
@@ -62,10 +89,11 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 8,
         overflow: Platform.OS == 'android' ?
-            'hidden' : 'visible'
+            'hidden' : 'visible',
+        position: 'relative'
     },
     button: {
-        flex: 1
+        flex: 1,
     },
     buttonPressed: {
         opacity: 0.5
@@ -80,6 +108,15 @@ const styles = StyleSheet.create({
     title: {
         fontWeight: 'bold',
         fontSize: 16
+    },
+    favIcon: {
+        position: 'absolute',
+        zIndex: 1,
+        right: 0,
+        padding: 6,
+        margin : 8,
+        backgroundColor : colors.white,
+        borderRadius : 50
     }
 
 });

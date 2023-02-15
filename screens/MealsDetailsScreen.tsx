@@ -1,12 +1,13 @@
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import React, { ReactElement, useLayoutEffect, useState } from "react";
+import React, { ReactElement, useContext, useLayoutEffect, useMemo, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import Meal from "../models/meal";
 import { IMealsDetails, RootStackParamList } from "../types/route";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RecipeInstructions from "../components/RecipeIntructions";
 import { colors } from "../styles/main";
+import { FavoritesContext, IFavoritesContext } from "../store/context/favoritesContext";
 
 const badgeGenerator = (badge: string): ReactElement => {
     return <View style={styles.badge}><Text>{badge}</Text></View>
@@ -19,11 +20,25 @@ function MealsDetailsScreen(): ReactElement {
     const { params } = useRoute<RouteProp<
         IMealsDetails, "Details">>();
     const { mealItem }: { mealItem: Meal } = params
+
+    const { addFavorite,
+        ids,
+        removeFavorite } = useContext<IFavoritesContext>(FavoritesContext)
+
+    const isFav = useMemo(() => {
+        return ids.includes(mealItem.id)
+    }, [mealItem, ids])
+
+
     const navigation = useNavigation<IMealsDetailsNavprops>()
 
-    const [fav, setFav] = useState<boolean>(false)
-
-    const handlerFavIcon = (): void => setFav(!fav)
+    const handlerFavIcon = (): void => {
+        if (isFav) {
+            removeFavorite(mealItem.id)
+        } else {
+            addFavorite(mealItem.id)
+        }
+    }
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -31,10 +46,11 @@ function MealsDetailsScreen(): ReactElement {
             headerRight: () => {
                 return <Icon
                     onPress={handlerFavIcon}
-                    name={fav ? 'star' : "star-o"} size={20} color="#fff" />
+                    name={isFav ? 'star' : "star-o"}
+                    size={20} color="#fff" />
             }
         })
-    }, [navigation, fav])
+    }, [navigation, isFav, handlerFavIcon])
 
     return <View style={{ flex: 1, marginBottom: 6 }}>
         <View style={styles.imageContainer} >
