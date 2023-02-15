@@ -40,7 +40,6 @@ const App = () => {
       <FavoritesContextProvider>
         <NavigationContainer >
         <Provider store={store}>
-
           <Stack.Navigator
             screenOptions={{
               title: 'Meal Categories',
